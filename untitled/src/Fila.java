@@ -1,18 +1,37 @@
 public class Fila extends CreatingQueue {
+
     private boolean IsQueueEmpty = true;
     private int HowManyInQueue;
 
-    public boolean CheckQueue(){
-        if (queue.length != 0) {
+    public Fila(int size) {
+        super(size);
+    }
+
+    public void IsQEmpty(){
+        if (getQueue() != null && getQueue().length > 0) {
             IsQueueEmpty = false;
+        } else {
+            IsQueueEmpty = true;
         }
-        return IsQueueEmpty;
     }
 
     public int CountQueue(){
-        for(int i=0;i<queue.length;i++){
-            HowManyInQueue = i + 1;
+        HowManyInQueue = 0;
+        if (getQueue() != null) {
+            for(int i=0; i<getQueue().length; i++){
+                if (getQueue()[i] != null) {
+                    HowManyInQueue++;
+                }
+            }
         }
+        return HowManyInQueue;
+    }
+
+    public boolean getIsQueueEmpty() {
+        return IsQueueEmpty;
+    }
+
+    public int getHowManyInQueue() {
         return HowManyInQueue;
     }
 }
